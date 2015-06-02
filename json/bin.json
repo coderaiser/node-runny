@@ -1,0 +1,6 @@
+{
+    "-h, --help         "           : "display this help and exit",
+    "-v, --version      "           : "display version and exit",
+    "-c, --command      "           : "command to run",
+    "-d, --directories  "           : "directories, divided by \",\""
+}

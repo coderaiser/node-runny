@@ -1,0 +1,35 @@
+{
+  "name": "runny",
+  "version": "1.0.0",
+  "description": "run one command in a couple directories",
+  "main": "lib/runny.js",
+  "bin": {
+    "runny": "bin/runny.js"
+  },
+  "dependencies": {
+    "async": "~1.1.0",
+    "minimist": "~1.1.1",
+    "readjson": "~1.0.2",
+    "spawnify": "~1.10.9",
+    "tryrequire": "~1.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coderaiser/node-runny.git"
+  },
+  "keywords": [
+    "run",
+    "command",
+    "directory"
+  ],
+  "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderaiser/node-runny/issues"
+  },
+  "homepage": "https://github.com/coderaiser/node-runny#readme"
+}
