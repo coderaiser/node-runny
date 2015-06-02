@@ -27,6 +27,8 @@
             boolean: [
                 'version',
                 'help',
+                'save',
+                'save-here'
             ],
             default: {
                 'command': options.command,
@@ -50,7 +52,9 @@
         start();
     
     function start() {
-        var command,
+        var fs, json,
+            saveName,
+            command,
             directories,
             emitter,
             runny   = require('..');
@@ -78,6 +82,24 @@
             emitter.on('error', function(error) {
                 console.error(error.message);
             });
+            
+            if (args['save-here'])
+                saveName = current + '/.runny.json';
+            else if (args.save)
+                saveName = home + '/.runny.json';
+            
+            if (saveName) {
+                fs      = require('fs');
+                
+                json    = JSON.stringify({
+                    command     : args.command,
+                    directories : args.directories
+                }, null, 4);
+                
+                fs.writeFile(saveName, json, function(error) {
+                    console.error(error.message);
+                });
+            }
         }
     }
     

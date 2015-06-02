@@ -16,6 +16,8 @@ Options:
   -v, --version       display version and exit
   -c, --command       command to run
   -d, --directories   directories, divided by ","
+  --save              save config to file ~/.runny.json
+  --save-here         save config to file ./runny.json
 ```
 
 ## Config
