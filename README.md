@@ -36,7 +36,7 @@ or `runny.json` in current directory with fields:
 ```
 
 Data will be read before execution in next order (left is more important):
-`command line parameter -> current directory/runny.json -> ~/.runny.json`
+`command line -> ./runny.json -> ~/.runny.json`
 
 ## License
 
