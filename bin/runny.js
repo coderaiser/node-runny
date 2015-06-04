@@ -8,8 +8,8 @@
         
         HOME        = (HOME_UNIX || HOME_WIN) + '/',
         
-        current     = process.cwd() + '/runny',
-        home        = HOME + '/.runny',
+        current     = process.cwd() + '/runny.json',
+        home        = HOME + '/.runny.json',
         
         tryRequire  = require('tryrequire'),
         
