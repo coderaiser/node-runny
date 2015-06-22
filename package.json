@@ -10,8 +10,7 @@
     "async": "~1.1.0",
     "minimist": "~1.1.1",
     "readjson": "~1.0.2",
-    "spawnify": "~2.0.0",
-    "tryrequire": "~1.1.5"
+    "spawnify": "~2.0.0"
   },
   "devDependencies": {},
   "scripts": {

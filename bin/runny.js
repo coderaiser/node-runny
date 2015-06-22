@@ -11,11 +11,11 @@
         current     = process.cwd() + '/runny.json',
         home        = HOME + '/.runny.json',
         
-        tryRequire  = require('tryrequire'),
+        readjson    = require('readjson'),
         
         options     = 
-            tryRequire(current) ||
-            tryRequire(home)    ||
+            readjson.sync.try(current) ||
+            readjson.sync.try(home)    ||
             {},
         
         argv        = process.argv,
