@@ -9,7 +9,7 @@
   "dependencies": {
     "async": "~1.1.0",
     "minimist": "~1.1.1",
-    "readjson": "~1.0.2",
+    "readjson": "~1.1.0",
     "spawnify": "~2.0.0"
   },
   "devDependencies": {},
