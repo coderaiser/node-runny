@@ -76,11 +76,11 @@
             emitter     = runny(command, directories);
             
             emitter.on('data', function(data) {
-                console.log(data);
+                process.stdout.write(data);
             });
             
             emitter.on('error', function(error) {
-                console.error(error.message);
+                process.stderr.write(error.message);
             });
             
             if (args['save-here'])
