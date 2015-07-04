@@ -3,15 +3,15 @@
 (function() {
     'use strict';
     
-    var HOME_WIN    = process.env.HOMEPATH,
-        HOME_UNIX   = process.env.HOME,
-        
-        HOME        = (HOME_UNIX || HOME_WIN) + '/',
-        
-        current     = process.cwd() + '/runny.json',
-        home        = HOME + '/.runny.json',
-        
+    var path        = require('path'),
         readjson    = require('readjson'),
+        
+        HOME        = require('os-homedir')(),
+        
+        cwd         = process.cwd(),
+        name        = 'runny.json',
+        current     = path.join(cwd, name),
+        home        = path.join(HOME, '.' + name),
         
         options     = 
             readjson.sync.try(current) ||

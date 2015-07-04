@@ -9,6 +9,7 @@
   "dependencies": {
     "async": "~1.1.0",
     "minimist": "~1.1.1",
+    "os-homedir": "~1.0.0",
     "readjson": "~1.1.0",
     "spawnify": "~2.0.0"
   },
@@ -21,9 +22,9 @@
     "url": "git://github.com/coderaiser/node-runny.git"
   },
   "keywords": [
-    "run",
     "command",
-    "directory"
+    "directory",
+    "run"
   ],
   "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
   "license": "MIT",
