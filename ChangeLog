@@ -1,3 +1,10 @@
+2015.07.04, v1.3.0
+
+feature:
+- (runny) add os-homedir
+- (runny) console -> process.stdout/stderr
+
+
 2015.06.26, v1.2.3
 
 feature:
