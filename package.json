@@ -11,7 +11,7 @@
     "minimist": "~1.1.1",
     "os-homedir": "~1.0.0",
     "readjson": "~1.1.0",
-    "spawnify": "~2.0.0"
+    "spawnify": "~2.1.0"
   },
   "devDependencies": {},
   "scripts": {
