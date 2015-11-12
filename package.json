@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "async": "~1.1.0",
+    "currify": "~1.0.0",
     "minimist": "~1.1.1",
     "os-homedir": "~1.0.0",
     "readjson": "~1.1.0",
