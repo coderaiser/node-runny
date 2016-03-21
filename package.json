@@ -7,7 +7,7 @@
     "runny": "bin/runny.js"
   },
   "dependencies": {
-    "async": "^1.5.0",
+    "async": "^2.0.0",
     "currify": "^1.0.0",
     "minimist": "^1.2.0",
     "os-homedir": "^1.0.0",
