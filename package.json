@@ -15,7 +15,7 @@
     "spawnify": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^2.10.2",
+    "eslint": "^3.10.1",
     "jscs": "^3.0.3",
     "jshint": "^2.9.2",
     "redrun": "^5.9.3"
