@@ -15,7 +15,7 @@
     "minimist": "^1.2.0",
     "os-homedir": "^1.0.0",
     "readjson": "^1.1.0",
-    "spawnify": "^3.0.0"
+    "spawnify": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^4.0.0",
