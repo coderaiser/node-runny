@@ -6,6 +6,9 @@
   "bin": {
     "runny": "bin/runny.js"
   },
+  "engines": {
+    "node": ">=4"
+  },
   "dependencies": {
     "async": "^2.0.0-rc.1",
     "currify": "^2.0.0",
