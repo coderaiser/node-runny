@@ -1,3 +1,12 @@
+2017.07.12, v2.0.0
+
+feature:
+- (package) async v2.0.0
+- (package) spawnify v4.0.0
+- (runny) es2015-ify
+- (package) eslint v4.0.0
+
+
 2016.11.23, v1.4.2
 
 feature:
