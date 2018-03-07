@@ -21,7 +21,7 @@
     "eslint": "^4.0.0",
     "jscs": "^3.0.3",
     "jshint": "^2.9.2",
-    "redrun": "^5.9.3"
+    "redrun": "^6.0.0"
   },
   "scripts": {
     "lint": "redrun lint:*",
