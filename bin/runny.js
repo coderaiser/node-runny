@@ -1,123 +1,113 @@
 #!/usr/bin/env node
 
-(function() {
-    'use strict';
-    
-    var path        = require('path'),
-        readjson    = require('readjson'),
-        
-        HOME        = require('os-homedir')(),
-        
-        cwd         = process.cwd(),
-        name        = 'runny.json',
-        current     = path.join(cwd, name),
-        home        = path.join(HOME, '.' + name),
-        
-        options     = 
-            readjson.sync.try(current) ||
-            readjson.sync.try(home)    ||
-            {},
-        
-        argv        = process.argv,
-        args        = require('minimist')(argv.slice(2), {
-            string: [
-                'command',
-                'directories'
-            ],
-            boolean: [
-                'version',
-                'help',
-                'save',
-                'save-here'
-            ],
-            default: {
-                'command': options.command,
-                'directories': options.directories
-            },
-            alias: {
-                v: 'version',
-                h: 'help',
-                c: 'command',
-                d: 'directories'
-            },
-            unknown: function(cmd) {
-                console.log('\'%s\' is not a runny option. See \'runny --help\'.', cmd);
-                process.exit(-1);
-            }
-        });
-    
-    if (args.version)
-        version();
-    else
-        start();
-    
-    function start() {
-        var fs, json,
-            saveName,
-            command,
-            directories,
-            emitter,
-            runny   = require('..');
-        
-        if (args.help) {
-            help();
-        } else if (!args.command) {
-            console.error('command could not be empty!');
-        } else if (!args.directories) {
-            console.error('directories could not be empty!');
-        } else {
-            command = args.command;
-            
-            if (typeof args.directories === 'string')
-                directories = args.directories.split(',');
-            else
-                directories = args.directories;
-            
-            emitter     = runny(command, directories);
-            
-            emitter.on('data', function(data) {
-                process.stdout.write(data);
-            });
-            
-            emitter.on('error', function(error) {
-                process.stderr.write(error.message);
-            });
-            
-            if (args['save-here'])
-                saveName = current + '/.runny.json';
-            else if (args.save)
-                saveName = home + '/.runny.json';
-            
-            if (saveName) {
-                fs      = require('fs');
-                
-                json    = JSON.stringify({
-                    command     : args.command,
-                    directories : args.directories
-                }, null, 4);
-                
-                fs.writeFile(saveName, json, function(error) {
-                    console.error(error.message);
-                });
-            }
+'use strict';
+
+const path = require('path');
+const readjson = require('readjson');
+
+const HOME = require('os').homedir();
+
+const cwd = process.cwd();
+const name = 'runny.json';
+const current = path.join(cwd, name);
+const home = path.join(HOME, '.' + name);
+
+const options     =
+    readjson.sync.try(current) ||
+    readjson.sync.try(home)    ||
+    {};
+
+const argv = process.argv;
+const args = require('minimist')(argv.slice(2), {
+        string: [
+            'command',
+            'directories'
+        ],
+        boolean: [
+            'version',
+            'help',
+            'save',
+            'save-here'
+        ],
+        default: {
+            'command': options.command,
+            'directories': options.directories
+        },
+        alias: {
+            v: 'version',
+            h: 'help',
+            c: 'command',
+            d: 'directories'
+        },
+        unknown: (cmd) => {
+            console.log('\'%s\' is not a runny option. See \'runny --help\'.', cmd);
+            process.exit(-1);
         }
-    }
+    });
+
+if (args.version)
+    version();
+else
+    start();
+
+function start() {
+    const runny = require('..');
     
-    function version() {
-        var pack = require('../package.json');
-        
-        console.log('v' + pack.version);
-    }
+    if (args.help)
+        return help();
     
-     function help() {
-        var bin         = require('../json/bin'),
-            usage       = 'Usage: runny [options]';
+    if (!args.command)
+        return console.error('command could not be empty!');
+    
+    if (!args.directories)
+        return console.error('directories could not be empty!');
+    
+    const {command} = args;
+    
+    let directories;
+    if (typeof args.directories === 'string')
+        directories = args.directories.split(',');
+    else
+        directories = args.directories;
+    
+   runny(command, directories);
+    
+    let saveName;
+    if (args['save-here'])
+        saveName = current + '/.runny.json';
+    else if (args.save)
+        saveName = home + '/.runny.json';
+    
+    if (saveName) {
+        const fs = require('fs');
         
-        console.log(usage);
-        console.log('Options:');
+        const json = JSON.stringify({
+            command     : args.command,
+            directories : args.directories
+        }, null, 4);
         
-        Object.keys(bin).forEach(function(name) {
-            console.log('  %s %s', name, bin[name]);
+        fs.writeFile(saveName, json, (error) => {
+            console.error(error.message);
         });
     }
-})();
+}
+
+function version() {
+    const pack = require('../package.json');
+    
+    console.log('v' + pack.version);
+}
+
+function help() {
+    const currify = require('currify/legacy');
+    const forEachKey = require('for-each-key');
+    
+    const bin = require('../json/bin');
+    const usage = 'Usage: runny [options]';
+    const log = currify((a, b, c) => console.log(a, b, c));
+    
+    console.log(usage);
+    console.log('Options:');
+    forEachKey(log(' %s %s'), bin);
+}
+

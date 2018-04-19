@@ -12,23 +12,19 @@
   "dependencies": {
     "async": "^2.0.0",
     "currify": "^2.0.0",
+    "for-each-key": "^1.0.1",
     "minimist": "^1.2.0",
-    "os-homedir": "^1.0.0",
     "readjson": "^1.1.0",
-    "spawnify": "^4.0.0"
+    "try-catch": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "^4.0.0",
-    "jscs": "^3.0.3",
-    "jshint": "^2.9.2",
     "redrun": "^6.0.0"
   },
   "scripts": {
     "lint": "redrun lint:*",
-    "lint:jshint": "jshint bin lib",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint:eslint-lib": "eslint lib",
-    "lint:jscs": "jscs --esnext bin lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
