@@ -10,12 +10,12 @@
     "node": ">=4"
   },
   "dependencies": {
-    "async": "^2.0.0",
     "currify": "^2.0.0",
     "for-each-key": "^1.0.1",
+    "itchy": "^1.0.0",
     "minimist": "^1.2.0",
     "readjson": "^1.1.0",
-    "try-catch": "^2.0.0"
+    "spawnify": "^4.0.4"
   },
   "devDependencies": {
     "eslint": "^4.0.0",

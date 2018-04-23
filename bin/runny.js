@@ -70,7 +70,15 @@ function start() {
     else
         directories = args.directories;
     
-   runny(command, directories);
+    const emitter = runny(command, directories);
+    
+    emitter.on('data', (data) => {
+        process.stdout.write(data);
+    });
+    
+    emitter.on('error', (error) => {
+        process.stderr.write(error.message);
+    });
     
     let saveName;
     if (args['save-here'])
