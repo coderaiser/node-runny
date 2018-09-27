@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "eslint": "^5.4.0",
-    "redrun": "^6.0.0"
+    "redrun": "^7.0.0"
   },
   "scripts": {
     "lint": "redrun lint:*",
