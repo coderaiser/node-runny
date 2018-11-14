@@ -10,7 +10,7 @@
     "node": ">=8"
   },
   "dependencies": {
-    "currify": "^2.0.0",
+    "currify": "^3.0.0",
     "for-each-key": "^1.0.1",
     "itchy": "^1.0.0",
     "minimist": "^1.2.0",
