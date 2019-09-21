@@ -7,7 +7,7 @@
     "runny": "bin/runny.js"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "dependencies": {
     "currify": "^3.0.0",
@@ -18,8 +18,7 @@
     "spawnify": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
-    "redrun": "^7.0.0"
+    "eslint": "^6.4.0"
   },
   "scripts": {
     "lint": "redrun lint:*",
