@@ -18,13 +18,17 @@
     "spawnify": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "eslint": "^6.4.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-putout": "^2.0.0",
+    "madrun": "^3.0.5",
+    "putout": "^6.1.0",
+    "supertape": "^1.2.3"
   },
   "scripts": {
-    "lint": "redrun lint:*",
-    "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
-    "lint:eslint-lib": "eslint lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "madrun lint",
+    "fix:lint": "madrun fix:lint",
+    "test": "madrun test"
   },
   "repository": {
     "type": "git",

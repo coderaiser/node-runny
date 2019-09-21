@@ -12,38 +12,38 @@ const name = 'runny.json';
 const current = path.join(cwd, name);
 const home = path.join(HOME, '.' + name);
 
-const options     =
+const options =
     readjson.sync.try(current) ||
-    readjson.sync.try(home)    ||
+    readjson.sync.try(home) ||
     {};
 
-const argv = process.argv;
+const {argv} = process;
 const args = require('minimist')(argv.slice(2), {
-        string: [
-            'command',
-            'directories'
-        ],
-        boolean: [
-            'version',
-            'help',
-            'save',
-            'save-here'
-        ],
-        default: {
-            'command': options.command,
-            'directories': options.directories
-        },
-        alias: {
-            v: 'version',
-            h: 'help',
-            c: 'command',
-            d: 'directories'
-        },
-        unknown: (cmd) => {
-            console.log('\'%s\' is not a runny option. See \'runny --help\'.', cmd);
-            process.exit(-1);
-        }
-    });
+    string: [
+        'command',
+        'directories',
+    ],
+    boolean: [
+        'version',
+        'help',
+        'save',
+        'save-here',
+    ],
+    default: {
+        command: options.command,
+        directories: options.directories,
+    },
+    alias: {
+        v: 'version',
+        h: 'help',
+        c: 'command',
+        d: 'directories',
+    },
+    unknown: (cmd) => {
+        console.log('\'%s\' is not a runny option. See \'runny --help\'.', cmd);
+        process.exit(-1);
+    },
+});
 
 if (args.version)
     version();
@@ -65,6 +65,7 @@ function start() {
     const {command} = args;
     
     let directories;
+    
     if (typeof args.directories === 'string')
         directories = args.directories.split(',');
     else
@@ -81,6 +82,7 @@ function start() {
     });
     
     let saveName;
+    
     if (args['save-here'])
         saveName = current + '/.runny.json';
     else if (args.save)
@@ -91,7 +93,7 @@ function start() {
         
         const json = JSON.stringify({
             command     : args.command,
-            directories : args.directories
+            directories : args.directories,
         }, null, 4);
         
         fs.writeFile(saveName, json, (error) => {
@@ -107,7 +109,7 @@ function version() {
 }
 
 function help() {
-    const currify = require('currify/legacy');
+    const currify = require('currify');
     const forEachKey = require('for-each-key');
     
     const bin = require('../json/bin');
