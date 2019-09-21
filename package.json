@@ -15,7 +15,7 @@
     "itchy": "^1.0.0",
     "minimist": "^1.2.0",
     "readjson": "^1.1.0",
-    "spawnify": "^5.0.0"
+    "spawnify": "^6.0.0"
   },
   "devDependencies": {
     "eslint": "^6.4.0"
