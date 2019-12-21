@@ -1,3 +1,13 @@
+2019.12.21, v4.0.1
+
+feature:
+- (package) for-each-key v2.0.0
+- (package) madrun v5.0.1
+- (package) putout v7.3.1
+- (package) eslint-plugin-putout v3.0.0
+- (package) currify v4.0.0
+
+
 2019.09.21, v4.0.0
 
 feature:
