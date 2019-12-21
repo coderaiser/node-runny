@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "currify": "^4.0.0",
-    "for-each-key": "^1.0.1",
+    "for-each-key": "^2.0.0",
     "itchy": "^1.0.0",
     "minimist": "^1.2.0",
     "readjson": "^1.1.0",
