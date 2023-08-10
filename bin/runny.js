@@ -2,6 +2,7 @@
 
 'use strict';
 
+const isString = (a) => typeof a === 'string';
 const path = require('path');
 const readjson = require('readjson');
 
@@ -10,14 +11,12 @@ const HOME = require('os').homedir();
 const cwd = process.cwd();
 const name = 'runny.json';
 const current = path.join(cwd, name);
-const home = path.join(HOME, '.' + name);
+const home = path.join(HOME, `.${name}`);
 
-const options =
-    readjson.sync.try(current) ||
-    readjson.sync.try(home) ||
-    {};
+const options = readjson.sync.try(current) || readjson.sync.try(home) || {};
 
 const {argv} = process;
+
 const args = require('minimist')(argv.slice(2), {
     string: [
         'command',
@@ -40,7 +39,7 @@ const args = require('minimist')(argv.slice(2), {
         d: 'directories',
     },
     unknown: (cmd) => {
-        console.log('\'%s\' is not a runny option. See \'runny --help\'.', cmd);
+        console.log(`'%s' is not a runny option. See 'runny --help'.`, cmd);
         process.exit(-1);
     },
 });
@@ -66,7 +65,7 @@ function start() {
     
     let directories;
     
-    if (typeof args.directories === 'string')
+    if (isString(args.directories))
         directories = args.directories.split(',');
     else
         directories = args.directories;
@@ -84,16 +83,16 @@ function start() {
     let saveName;
     
     if (args['save-here'])
-        saveName = current + '/.runny.json';
+        saveName = `${current}/.runny.json`;
     else if (args.save)
-        saveName = home + '/.runny.json';
+        saveName = `${home}/.runny.json`;
     
     if (saveName) {
         const fs = require('fs');
         
         const json = JSON.stringify({
-            command     : args.command,
-            directories : args.directories,
+            command: args.command,
+            directories: args.directories,
         }, null, 4);
         
         fs.writeFile(saveName, json, (error) => {
@@ -120,4 +119,3 @@ function help() {
     console.log('Options:');
     forEachKey(log(' %s %s'), bin);
 }
-
