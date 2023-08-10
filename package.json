@@ -7,7 +7,7 @@
     "runny": "bin/runny.js"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "dependencies": {
     "currify": "^4.0.0",
