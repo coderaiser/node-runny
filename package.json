@@ -1,6 +1,6 @@
 {
   "name": "runny",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "type": "commonjs",
   "description": "run one command in a couple directories",
   "main": "lib/runny.js",
