@@ -2,11 +2,11 @@
 
 'use strict';
 
-const isString = (a) => typeof a === 'string';
-const path = require('path');
+const process = require('node:process');
+const path = require('node:path');
 const readjson = require('readjson');
 
-const HOME = require('os').homedir();
+const HOME = require('node:os').homedir();
 
 const cwd = process.cwd();
 const name = 'runny.json';
@@ -44,6 +44,8 @@ const args = require('minimist')(argv.slice(2), {
     },
 });
 
+const isString = (a) => typeof a === 'string';
+
 if (args.version)
     version();
 else
@@ -68,7 +70,7 @@ function start() {
     if (isString(args.directories))
         directories = args.directories.split(',');
     else
-        directories = args.directories;
+        ({directories} = args);
     
     const emitter = runny(command, directories);
     
@@ -88,7 +90,7 @@ function start() {
         saveName = `${home}/.runny.json`;
     
     if (saveName) {
-        const fs = require('fs');
+        const fs = require('node:fs');
         
         const json = JSON.stringify({
             command: args.command,
