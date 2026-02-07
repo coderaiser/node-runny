@@ -13,7 +13,7 @@
   "dependencies": {
     "currify": "^4.0.0",
     "for-each-key": "^2.0.0",
-    "itchy": "^1.0.0",
+    "itchy": "^2.0.1",
     "minimist": "^1.2.0",
     "readjson": "^2.2.2",
     "spawnify": "^8.0.0"
