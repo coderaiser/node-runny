@@ -1,3 +1,17 @@
+2026.02.07, v6.0.0
+
+feature:
+- f2e0f45 export: default -> named
+- 4b7860f runny: migrate to ESM
+- 0e11c87 runny: supertape v12.4.0
+- 52cf5b2 runny: putout v41.19.0
+- f5c1ff1 runny: madrun v12.1.3
+- b181eb5 runny: itchy v2.0.1
+- 2c1b445 runny: eslint-plugin-putout v30.0.2
+- 5d6d316 runny: eslint-plugin-node v11.1.0
+- b9b00b8 runny: eslint-plugin-n v17.23.2
+- b8bef58 runny: eslint v10.0.0
+
 2023.08.10, v5.0.0
 
 feature:
