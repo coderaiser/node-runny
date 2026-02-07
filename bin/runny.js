@@ -15,6 +15,7 @@ const current = path.join(cwd, name);
 const home = path.join(HOME, `.${name}`);
 const options = readjson.sync.try(current) || readjson.sync.try(home) || {};
 const {argv} = process;
+
 const args = minimist(argv.slice(2), {
     string: [
         'command',
@@ -41,6 +42,7 @@ const args = minimist(argv.slice(2), {
         process.exit(-1);
     },
 });
+
 const isString = (a) => typeof a === 'string';
 
 if (args.version)
@@ -49,7 +51,7 @@ else
     start();
 
 async function start() {
-    const runny = await import('..');
+    const {runny} = await import('../lib/runny.js');
     
     if (args.help)
         return help();
