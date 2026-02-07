@@ -1,23 +1,21 @@
 #!/usr/bin/env node
 
-'use strict';
+import process from 'node:process';
+import path from 'node:path';
+import nodeOs from 'node:os';
+import {createRequire} from 'node:module';
+import readjson from 'readjson';
+import minimist from 'minimist';
 
-const process = require('node:process');
-const path = require('node:path');
-const readjson = require('readjson');
-
-const HOME = require('node:os').homedir();
-
+const require = createRequire(import.meta.url);
+const HOME = nodeOs.homedir();
 const cwd = process.cwd();
 const name = 'runny.json';
 const current = path.join(cwd, name);
 const home = path.join(HOME, `.${name}`);
-
 const options = readjson.sync.try(current) || readjson.sync.try(home) || {};
-
 const {argv} = process;
-
-const args = require('minimist')(argv.slice(2), {
+const args = minimist(argv.slice(2), {
     string: [
         'command',
         'directories',
@@ -43,7 +41,6 @@ const args = require('minimist')(argv.slice(2), {
         process.exit(-1);
     },
 });
-
 const isString = (a) => typeof a === 'string';
 
 if (args.version)
@@ -51,8 +48,8 @@ if (args.version)
 else
     start();
 
-function start() {
-    const runny = require('..');
+async function start() {
+    const runny = await import('..');
     
     if (args.help)
         return help();
@@ -90,7 +87,7 @@ function start() {
         saveName = `${home}/.runny.json`;
     
     if (saveName) {
-        const fs = require('node:fs');
+        const fs = await import('node:fs');
         
         const json = JSON.stringify({
             command: args.command,

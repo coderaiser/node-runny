@@ -1,14 +1,14 @@
 {
   "name": "runny",
   "version": "5.0.0",
-  "type": "commonjs",
+  "type": "module",
   "description": "run one command in a couple directories",
   "main": "lib/runny.js",
   "bin": {
     "runny": "bin/runny.js"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=22"
   },
   "dependencies": {
     "currify": "^4.0.0",

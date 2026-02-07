@@ -24,6 +24,7 @@ Options:
 
 You could create file `.runny.json` in home directory,
 or `runny.json` in current directory with fields:
+
 ```json
 {
     "command": "pwd",
